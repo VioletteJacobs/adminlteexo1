@@ -24,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+    $articles = Article::all();
+    return view('home', compact("articles"));
+})->name('home')->middleware('IsAdmin');
 Route::resource('articles', ArticleController::class);

@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function __construct(){
+        $this->middleware("IsAdmin");
+        $this->middleware("IsRedacteur")->only("edit", "update", "destroy");
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +57,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        // $show = $article;
+        // return view("articleshow", compact("show"));
     }
 
     /**
@@ -63,7 +69,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $edit = $article;
+        return view ("pages.articles.editArticle", compact("edit"));
     }
 
     /**
@@ -75,7 +82,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $update = $article;
+        $update->title = $request->title;
+        $update->content = $request->content;
+        $update->save();
+        return redirect("/");
     }
 
     /**
@@ -86,6 +97,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect("/");
     }
 }

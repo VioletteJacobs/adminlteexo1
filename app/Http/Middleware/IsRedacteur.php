@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IsRedacteur
 {
@@ -16,6 +17,13 @@ class IsRedacteur
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        // dd($request->route());
+        $articleUserId = $request->route()->parameters()["article"]->user_id;
+        if(Auth::user()->id == $articleUserId){
+            return $next($request);
+        }
+        else{
+            return redirect()->back()->withErrors("Vous n'avez pas accès à cette partie du site!");
+        }
     }
 }

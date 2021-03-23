@@ -8,12 +8,12 @@
         <div>
             <div class="form-group">
                 <label for="title">Titre : </label>
-                <input type="text" class="form-control" name="content">
+                <input type="text" class="form-control" name="title">
 
             </div>
             <div class="form-group">
                 <label for="content">Contenu : </label>
-                <textarea name="title" id="" cols="100" rows="5"></textarea>
+                <textarea name="content" id="" cols="100" rows="5"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Ajouter</button>
