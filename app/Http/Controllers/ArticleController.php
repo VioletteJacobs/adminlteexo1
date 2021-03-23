@@ -69,6 +69,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $this->authorize("article-edit", $article);
         $edit = $article;
         return view ("pages.articles.editArticle", compact("edit"));
     }

@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Contenu : </label>
-                <textarea name="content" id="" cols="100" rows="5" value="{{old('content') ? old('content') : $edit->content}}"></textarea>
+                <textarea name="content" id="" cols="100" rows="5">{{old('content') ? old('content') : $edit->content}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
 
