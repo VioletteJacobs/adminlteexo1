@@ -19,7 +19,7 @@ class IsRedacteur
     {
         // dd($request->route());
         $articleUserId = $request->route()->parameters()["article"]->user_id;
-        if(Auth::user()->id == $articleUserId){
+        if(Auth::user()->id == $articleUserId || Auth::check() && Auth::id()== 1){
             return $next($request);
         }
         else{

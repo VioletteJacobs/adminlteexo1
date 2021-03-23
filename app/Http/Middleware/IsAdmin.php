@@ -17,11 +17,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role_id == 1){
+        if(Auth::check() && Auth::user()->role_id == 1 || Auth::check() && Auth::user()->role_id == 2){
             return $next($request);
         }
         else{
-            return redirect()->back();
+            return redirect()->back()->withErrors("Vous n'avez pas accès à cette partie du site!");
         }
     }
 }

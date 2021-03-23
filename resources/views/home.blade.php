@@ -7,15 +7,16 @@
 
 <div class="container">
     {{-- tables des articles  --}}
-    <h1 class="text-center"> Nos articles: </h1>
-    <a href="/articles/create">Ajouter un article</a>
+    <h1 class="text-center pb-5"> Nos articles: </h1>
+    <a href="/articles/create" class="btn btn-primary p-3 mb-5">Ajouter un article</a>
     <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Titre</th>
             <th scope="col">Auteur</th>
-            <th>Edit</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +26,14 @@
               <td>{{$item->title}}</td>
               <td>{{$item->users->name}}</td>
               <td>
-                <a href="/article/{{$item}}/edit">Edit</a>
+                <a href="/articles/{{$item->id}}/edit">Edit</a>
+              </td>
+              <td>
+                <form action="/articles/{{$item->id}}" method="POST">
+                  @csrf
+                  @method("DELETE")
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
               </td>
             </tr>
             @endforeach

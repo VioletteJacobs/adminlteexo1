@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container text-white ">
-    <h1 class="text-center">Ajouter un article </h1>
+    <h1 class="text-center pb-5">Ajouter un article </h1>
     <form action="/articles" method="POST">
         @csrf
         <div>
@@ -15,9 +15,7 @@
                 <label for="content">Contenu : </label>
                 <textarea name="content" id="" cols="100" rows="5"></textarea>
             </div>
-
             <button type="submit" class="btn btn-primary">Ajouter</button>
-
         </div>
     </form>
 </div>
