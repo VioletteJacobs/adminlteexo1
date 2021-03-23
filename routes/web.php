@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,8 @@ Auth::routes();
 
 Route::get('/home', function() {
     $articles = Article::all();
-    return view('home', compact("articles"));
+    $users = User::all();
+    return view('home', compact("articles", "users"));
 })->name('home')->middleware('IsAdmin');
 Route::resource('articles', ArticleController::class);
+Route::resource('users', UserController::class);

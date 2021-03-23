@@ -42,4 +42,41 @@
         </tbody>
       </table>
 </div>
+<div>
+  <h1>Les utilisatrices: </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($users as $user)
+        <tr>
+          <th scope="row"></th>
+          <td>{{$user->name}}</td>
+          <td>{{$user->email}}</td>
+          {{-- <td>
+            @can("article-edit", $user)
+            <a href="/articles/{{$user->id}}/edit">Edit</a>
+            @endcan
+          </td> --}}
+          <td>
+            @can("user-delete", $user)
+            <form action="/users/{{$user->id}}" method="POST">
+              @csrf
+              @method("DELETE")
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            @endcan
+          </td>
+        </tr>
+        @endforeach
+    </tbody>
+  </table>
+
+</div>
 @stop
