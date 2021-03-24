@@ -29,8 +29,11 @@
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                         <form action="/logout" method="post" class="ml-3 ">
                             @csrf
-                            <button type="submit" class="text-white btn btn-warning">Logout</button>
+                            <button type="submit" class="btn btn-warning">Logout</button>
                         </form>
+
+                        <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
+
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 

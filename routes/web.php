@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\User;
@@ -32,3 +33,5 @@ Route::get('/home', function() {
 })->name('home')->middleware('IsAdmin');
 Route::resource('articles', ArticleController::class);
 Route::resource('users', UserController::class);
+Route::get("/contact", [MailController::class, "index"]);
+Route::post("/mail/store", [MailController::class, "store"]);
