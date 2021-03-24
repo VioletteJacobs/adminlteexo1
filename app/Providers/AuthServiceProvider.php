@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use PhpParser\Node\Stmt\If_;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,8 +29,13 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $article->user_id;
         });
         // $this->registerPolicies();
-        Gate::define("user-delete", function($user){
-            return $user->role_id == 1;
+        Gate::define("user-delete", function($user, $currentUser){
+            // dd($currentUser);
+            if ($user->role_id == 1 && $currentUser->role_id != 1) {
+                return  true;
+            }else{
+                return false;
+            }
         });
     }
 }

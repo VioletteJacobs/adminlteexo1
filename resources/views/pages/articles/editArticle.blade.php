@@ -3,7 +3,7 @@
 
 <div class="container text-white ">
     <h1 class="text-center">Modifier un article </h1>
-    <form action="/articles/{$edit}" method="POST">
+    <form action="/articles/{{$edit->id}}" method="POST">
         @csrf
         @method("PATCH")
         <div>

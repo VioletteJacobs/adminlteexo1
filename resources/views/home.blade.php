@@ -20,18 +20,18 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($articles as $article)
+            @foreach ($articles as $item)
             <tr>
               <th scope="row"></th>
-              <td>{{$article->title}}</td>
-              <td>{{$article->users->name}}</td>
+              <td>{{$item->title}}</td>
+              <td>{{$item->users->name}}</td>
               <td>
-                @can("article-edit", $article)
-                <a href="/articles/{{$article->id}}/edit">Edit</a>
+                @can("article-edit", $item)
+                <a href="/articles/{{$item->id}}/edit">Edit</a>
                 @endcan
               </td>
               <td>
-                <form action="/articles/{{$article->id}}" method="POST">
+                <form action="/articles/{{$item->id}}" method="POST">
                   @csrf
                   @method("DELETE")
                   <button type="submit" class="btn btn-danger">Delete</button>
