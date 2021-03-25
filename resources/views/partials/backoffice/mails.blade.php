@@ -16,7 +16,8 @@
             @foreach ($mails as $mail)
             <tr>
               <th scope="row"></th>
-              <td>{{$mail->subject->subject}}</td>
+              {{-- {{dd($mail)}} --}}
+              <td>{{$mail->subjectMails->subject}}</td>
               <td>{{$mail->mailClient}}</td>
               <td>{{$mail->messageClient}}</td>
               <td>

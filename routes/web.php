@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NewspaperController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\User;
@@ -35,6 +36,8 @@ Route::get('/home', function() {
 Route::get("/contact", [MailController::class, "index"]);
 Route::get("/mail", [MailController::class, "indexBackendMail"]);
 Route::post("/mail/store", [MailController::class, "store"]);
+Route::post("/newspaper", [NewspaperController::class, "store"]);
+
 
 Route::resource('articles', ArticleController::class);
 Route::resource('users', UserController::class);

@@ -22,29 +22,37 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="relative  items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+                <nav class=" d-flex navbar navbar-expand-lg navbar-dark bg-dark">
+                @if (Route::has('login'))
+                <div class="hidden d-flex px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                        <form action="/logout" method="post" class="ml-3 ">
-                            @csrf
-                            <button type="submit" class="btn btn-warning">Logout</button>
-                        </form>
-
-                        <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
-
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline btn btn-warning my-5">Home</a>
+                    <form action="/logout" method="post" class="ml-3 ">
+                        @csrf
+                        <button type="submit" class="btn btn-warning">Logout</button>
+                    </form>
+                    <form action="/newspaper" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="" class="text-white">votre adresse mail</label>
+                            <input type="text" name="email">
+                            <button type="submit" class="btn btn-warning my-5">S'inscire à la newspaper</button>
+                        </div>
+                    </form>
+                    <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                    
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    @endif
                     @endauth
                 </div>
-            @endif
-            @yield('content')
-        </div>
+                @endif
+            </nav>
+                @yield('content')
+            </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

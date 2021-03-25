@@ -16,7 +16,7 @@ class MailController extends Controller
         return view("pages.contact", compact("subjects"));
     }
     public function store(Request $request){
-        
+
         $newmail = new ModelsMail;
         $newmail->messageClient = $request->messageClient;
         $newmail->email = $request->email;
@@ -28,6 +28,7 @@ class MailController extends Controller
     }
 
     public function indexBackendMail(){
-        return view("pages.mails.mails");
+        $mails = ModelsMail::all();
+        return view("pages.mails.mails", compact("mails"));
     }
 }
