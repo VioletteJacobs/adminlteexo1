@@ -31,7 +31,11 @@ Route::get('/home', function() {
     $users = User::all();
     return view('home', compact("articles", "users"));
 })->name('home')->middleware('IsAdmin');
+
+Route::get("/contact", [MailController::class, "index"]);
+Route::get("/mails", [MailController::class, "indexBackendMail"]);
+Route::post("/mail/store", [MailController::class, "store"]);
+
 Route::resource('articles', ArticleController::class);
 Route::resource('users', UserController::class);
-Route::get("/contact", [MailController::class, "index"]);
-Route::post("/mail/store", [MailController::class, "store"]);
+Route::resource("mails", MailController::class);
