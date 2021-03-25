@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mail extends Model
 {
     use HasFactory;
-    public function subjetMails(){
-        return $this->belongsTo(subjetMails::class, "subject_mails_id");
+    public function subjectMails(){
+        return $this->belongsTo(SubjectMail::class, "subject_mails_id");
     }
 }

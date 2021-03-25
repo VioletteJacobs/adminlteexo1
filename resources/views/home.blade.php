@@ -9,7 +9,7 @@
     {{-- tables des articles  --}}
     <h1 class="text-center pb-5"> Nos articles: </h1>
     <a href="/articles/create" class="btn btn-primary p-3 mb-5">Ajouter un article</a>
-    <a href="/mails">Voir mes mails</a>
+    <a href="/mail">Voir mes mails</a>
     <table class="table">
         <thead>
           <tr>

@@ -7,17 +7,16 @@
         <div class=container>
             <div class="form-group">
                 <label for="" class="text-warning">Sujet du Mail: </label>
-                <select name="" id="">
+                <select name="subject_mails_id" id="">
                     @foreach ($subjects as $subject)
-                    <option name="subjectEmail" value="{{$subject->id}}">{{$subject->subject}}</option>
-                        
+                    <option name="subject_mails_id" value="{{$subject->id}}">{{$subject->subject}}</option>
                     @endforeach
                 </select>
             </div>
     
             <div class="form-group">
                 <label for=""class="text-white">Votre adresse mail: </label>
-                <input type="email" class="contact-from-text" name="emailClient">
+                <input type="email" class="contact-from-text" name="email">
             </div>
     
             <div class="form-group">

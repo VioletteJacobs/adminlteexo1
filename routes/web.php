@@ -33,7 +33,7 @@ Route::get('/home', function() {
 })->name('home')->middleware('IsAdmin');
 
 Route::get("/contact", [MailController::class, "index"]);
-Route::get("/mails", [MailController::class, "indexBackendMail"]);
+Route::get("/mail", [MailController::class, "indexBackendMail"]);
 Route::post("/mail/store", [MailController::class, "store"]);
 
 Route::resource('articles', ArticleController::class);

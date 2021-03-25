@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\SubjectMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,8 +11,9 @@ use Illuminate\Queue\SerializesModels;
 class Mailsend extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $messageClient;
-    public $emailClient;
+    public $email;
     public $subjectEmail;
 
     /**
@@ -21,9 +23,12 @@ class Mailsend extends Mailable
      */
     public function __construct($request)
     {
-        $this->emailClient = $request->emailClient;
+
+        $subject = SubjectMail::find($request->subject_mails_id);
+        $this->email = $request->email;
         $this->messageClient = $request->messageClient;
-        $this->subjectEmail = $request->subjectEmail;
+        $this->subjectEmail = $subject->subject;
+
     }
 
     /**
@@ -33,6 +38,7 @@ class Mailsend extends Mailable
      */
     public function build()
     {
-        return $this->from($this->emailClient)->subject($this->subjectEmail)->view('template.templateMail')->with(["emailClient" => $this->emailClient, "emailMessage" => $this->messageClient]);
+        // dd($this->subjectEmail);
+        return $this->from($this->email)->subject($this->subjectEmail)->view('template.templateMail')->with(["emailClient" => $this->email, "emailMessage" => $this->messageClient]);
     }
 }
