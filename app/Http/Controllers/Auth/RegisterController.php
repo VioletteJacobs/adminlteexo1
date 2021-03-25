@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendRegister;
 use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -70,6 +72,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             "role_id"=> 2,
+            Mail::to("lnj@hl")->send(new SendRegister($data))
         ]);
         return $user;
     }

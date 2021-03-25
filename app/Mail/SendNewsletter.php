@@ -20,6 +20,7 @@ class SendNewsletter extends Mailable
     public function __construct($data)
     {
         $this->letter = $data;
+
     }
 
     /**

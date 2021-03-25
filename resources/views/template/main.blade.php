@@ -23,36 +23,60 @@
     </head>
     <body class="antialiased">
         <div class="relative  items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <nav class=" d-flex navbar navbar-expand-lg navbar-dark bg-dark">
-                @if (Route::has('login'))
-                <div class="hidden d-flex px-6 py-4 sm:block">
-                    @auth
-                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline btn btn-warning my-5">Home</a>
-                    <form action="/logout" method="post" class="ml-3 ">
-                        @csrf
-                        <button type="submit" class="btn btn-warning">Logout</button>
-                    </form>
-                    <form action="/newspaper" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="" class="text-white">votre adresse mail</label>
-                            <input type="text" name="email">
-                            <button type="submit" class="btn btn-warning my-5">S'inscire à la newspaper</button>
+                <nav class=" d-flex navbar navbar-expand-lg" style="background-color : rgb(26,32,44">
+                    <ul class="navbar-nav mr-auto">
+                        @if (Route::has('login'))
+                        <div class="hidden d-flex px-6 py-4 sm:block">
+                            @auth
+                            <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline text-white">Home</a>
+                            <form action="/logout" method="post" class="ml-3 ">
+                                @csrf
+                                <button type="submit" class="btn btn-warning">Logout</button>
+                            </form>
+                            {{-- <li class="nav-item">
+                                <form action="/newspaper" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="" class="text-white">votre adresse mail</label>
+                                        <input type="text" name="email">
+                                        <button type="submit" class="btn btn-warning my-5">S'inscire à la newspaper</button>
+                                    </div>
+                                </form>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
+                                
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline btn btn-warning">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                {{-- <form action="/newspaper" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="" class="text-white">votre adresse mail</label>
+                                        <input type="text" name="email">
+                                        <button type="submit" class="btn btn-warning my-5">S'inscire à la newspaper</button>
+                                    </div>
+                                </form> --}}
+                            </li>
+                            <li class="nav-item m-5 align-items-end">
+                                <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
+                            </li>
+                            
+                            @if (Route::has('register'))
+                            <li>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            </li>
+                            @endif
+                            @endauth
                         </div>
-                    </form>
-                    <a class=" btn btn-warning my-5" href="/contact">Nous contacter</a>
-                    @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                    @endif
-                    @endauth
+                        @endif
+                        </ul>
+                    </nav>
+                    @yield('content')
                 </div>
-                @endif
-            </nav>
-                @yield('content')
-            </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

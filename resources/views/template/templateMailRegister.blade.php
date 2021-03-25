@@ -12,11 +12,12 @@
             <td class="frame" bgcolor="#ffffff" style="padding:28px 40px 40px; border-radius:0 0 3px 3px;">
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td align="center" style="padding:0 0 15px; font:bold 24px/26px Arial, Helvetica, sans-serif; color:#000;"><multiline><div>Hello!</div></multiline></td>
+                        <td align="center" style="padding:0 0 15px; font:bold 24px/26px Arial, Helvetica, sans-serif; color:#000;"><multiline><div>Hello! {{$name}}. <span> Vous vous êtes inscrite avec l'adresse suivante : {{$email}}</span></div></multiline></td>
                     </tr>
                     <tr>
                         <td class="p-30" style="padding:0 0 43px; font:14px/25px Arial, Helvetica, sans-serif; color:#000;">
-                            <multiline><div>Merci de vous êtres inscrite à notre newspaper spcéial DEV. Vous recevrez mensuellement le journal du dev ainsi que la mise en lumière de certains des projets formidables pour lesquels nous travaillons. </div></multiline>
+                            <multiline><div>Merci de vous êtres inscrite sur notre site. Vous pourrez maintenant écrite des articles, les modifier... </div></multiline>
+
                         </td>
                     </tr>
                     <tr>

@@ -9,8 +9,9 @@
         <div class="card-body">
           <blockquote class="blockquote mb-0">
             <p>{{$show ->content}}</p>
-            <a href="/">welcome</a>
+            <a href="/">Retour à la welcome</a>
           </blockquote>
         </div>
       </div>
 </div>
+@endsection
